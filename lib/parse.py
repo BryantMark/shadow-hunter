@@ -3,7 +3,17 @@
 import sys
 import json
 
+result_code_map = {"OK": "OK",
+    "WA": "WA", 
+    "RT": "RTE",
+    "TL": "TLE",
+    "ML": "MLE",
+    "PE": "PE", 
+    "CE": "CE",
+}
+
 if __name__ == "__main__":
+#    result_code_set = []
     problem_count = 0
     teams = {}
     submissions = []
@@ -23,7 +33,10 @@ if __name__ == "__main__":
                         result_code = line.split(',')[0:5]
                 team_name = teams[team_id]
                 submit_time = int(submit_time)
+                result_code = result_code_map[result_code]
                 submissions.append((team_name, problem_code, \
                         submit_time, result_code))
-    sys.stdout.write(json.dumps({"problem_count": problem_count, 
+#                result_code_set.append(result_code)
+#    print(list(set(result_code_set)))
+    sys.stdout.write(json.dumps({"problem_count": problem_count, \
             "submission": submissions}, indent=4))
