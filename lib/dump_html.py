@@ -6,7 +6,7 @@ import json
 TEMPLATE = """<html>
 <head>
     <style type="text/css">
-        .okay: green;
+        .okay color: green;
         .wrong color: red;
     </style>
     <title>Preview</title>
