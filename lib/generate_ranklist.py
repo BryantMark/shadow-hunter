@@ -56,5 +56,6 @@ if __name__ == "__main__":
     ranklist = []
     for team in sorted(teams.values()):
         ranklist.append([team.name] + team.get_pretty_problem_list() \
-                + [team.get_penalty()])
+                + [str(team.get_solved_problem())
+                        , str(team.get_penalty())])
     sys.stdout.write(json.dumps(ranklist, indent=4))
