@@ -5,8 +5,8 @@ import json
 
 if __name__ == "__main__":
     problem_count = 0
-    team = {}
-    submission = []
+    teams = {}
+    submissions = []
     for line in sys.stdin:
         if line[0] == '@':
             line = line[1:]
@@ -17,13 +17,13 @@ if __name__ == "__main__":
             if command_type == 't':
                 team_id = line.split(',')[0]
                 team_name = ','.join(line.split(',')[3:])[1:-1]
-                team[team_id] = team_name
+                teams[team_id] = team_name
             if command_type == 's':
                 team_id, problem_code, submit_count, submit_time, \
                         result_code = line.split(',')[0:5]
-                team_name = team[team_id]
+                team_name = teams[team_id]
                 submit_time = int(submit_time)
-                submission.append((team_name, problem_code, \
+                submissions.append((team_name, problem_code, \
                         submit_time, result_code))
     sys.stdout.write(json.dumps({"problem_count": problem_count, 
-            "submission": submission}, indent=4))
+            "submission": submissions}, indent=4))
